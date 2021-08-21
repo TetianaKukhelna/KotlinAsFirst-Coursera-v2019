@@ -2,6 +2,7 @@
 
 package lesson3.task1
 
+import kotlin.math.abs
 import kotlin.math.sqrt
 
 /**
@@ -67,7 +68,17 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun digitNumber(n: Int): Int = TODO()
+fun digitNumber(n: Int): Int {
+    val i = 0
+    var tmp = n
+    var y = 0
+    while ((tmp / 10 > 0)) {
+        tmp = tmp / 10
+        y = y + i + 1
+    }
+    return y + 1
+
+}
 
 /**
  * Простая
@@ -75,7 +86,19 @@ fun digitNumber(n: Int): Int = TODO()
  * Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
-fun fib(n: Int): Int = TODO()
+fun fib(n: Int): Int {
+    var fib1 = 0
+    var fib2 = 1
+    var tmp = 0
+    if (n <= 2)
+        return fib2
+    for (i in 1..n - 1) {
+        tmp = fib1 + fib2
+        fib1 = fib2
+        fib2 = tmp
+    }
+    return tmp
+}
 
 /**
  * Простая
@@ -84,20 +107,63 @@ fun fib(n: Int): Int = TODO()
  * минимальное число k, которое делится и на m и на n без остатка
  */
 fun lcm(m: Int, n: Int): Int = TODO()
+//{
+//    var M = m
+//    var N = n
+//    var arr_M = mutableListOf<Int>()
+//    var arr_N = mutableListOf<Int>()
+//    var tmp = 0
+//
+//    for (i in 2..n * m) {
+//        for (y in 0..n * m) {
+//            if ((M % i) == 0) {
+//                arr_M[y] = i
+//            }
+//            else if ((N % i) == 0) {
+//                arr_N[y] = i
+//            }
+//            break
+//        }
+//    }
+//    for (i in arr_M) {
+//        if (arr_M[i] == arr_N[i]) {
+//            arr_M.removeAt(i)
+//            arr_N.removeAt(i)
+//        }
+//        i + 1
+//    }
+//    tmp = arr_M[0]
+//    for(i in arr_M)
+//        tmp = tmp * arr_M[i]
+//
+//    return M * tmp
+//}
 
 /**
  * Простая
  *
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
-fun minDivisor(n: Int): Int = TODO()
+fun minDivisor(n: Int): Int {
+    for (i in 2..n) {
+        if (n % i == 0)
+            return i
+    }
+    return n
+}
 
 /**
  * Простая
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int = TODO()
+fun maxDivisor(n: Int): Int {
+    for (i in n - 1 downTo 1) {
+        if (n % i == 0)
+            return i
+    }
+    return n
+}
 
 /**
  * Простая
@@ -106,7 +172,13 @@ fun maxDivisor(n: Int): Int = TODO()
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = TODO()
+fun isCoPrime(m: Int, n: Int): Boolean {
+    for (i in m downTo 2) {
+        if (n % i == 0 && m % i == 0)
+            return false
+    }
+    return true
+}
 
 /**
  * Простая
@@ -115,7 +187,13 @@ fun isCoPrime(m: Int, n: Int): Boolean = TODO()
  * то есть, существует ли такое целое k, что m <= k*k <= n.
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
-fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
+fun squareBetweenExists(m: Int, n: Int): Boolean {
+    for (i in 1..sqrt(n.toDouble()).toInt()) {
+        if (i * i in m..n)
+            return true
+    }
+    return false
+}
 
 /**
  * Средняя
@@ -133,7 +211,19 @@ fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
  * Написать функцию, которая находит, сколько шагов требуется для
  * этого для какого-либо начального X > 0.
  */
-fun collatzSteps(x: Int): Int = TODO()
+fun collatzSteps(x: Int): Int {
+    var tmp = x
+    var i = 0
+    while(tmp != 1){
+        if(tmp % 2 == 0){
+            tmp /= 2
+        }
+        else
+            tmp = 3 * tmp + 1
+        i++
+    }
+    return i
+}
 
 /**
  * Средняя
@@ -144,7 +234,12 @@ fun collatzSteps(x: Int): Int = TODO()
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.sin и другие стандартные реализации функции синуса в этой задаче запрещается.
  */
-fun sin(x: Double, eps: Double): Double = TODO()
+fun sin(x: Double, eps: Double): Double {
+//    while (abs(eps)<x){
+//
+//    }
+
+}
 
 /**
  * Средняя
