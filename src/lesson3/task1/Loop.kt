@@ -2,6 +2,7 @@
 
 package lesson3.task1
 
+import java.lang.Math.pow
 import kotlin.math.abs
 import kotlin.math.sqrt
 
@@ -235,10 +236,16 @@ fun collatzSteps(x: Int): Int {
  * Использовать kotlin.math.sin и другие стандартные реализации функции синуса в этой задаче запрещается.
  */
 fun sin(x: Double, eps: Double): Double {
-//    while (abs(eps)<x){
-//
-//    }
 
+    var tmp = x
+    var sum = x
+    var i = 2
+    while(abs(tmp)>eps){
+        tmp = -pow(tmp, i.toDouble())/(i*(i+1))
+        sum += tmp
+        i = i+2
+    }
+    return sum
 }
 
 /**
@@ -250,7 +257,17 @@ fun sin(x: Double, eps: Double): Double {
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.cos и другие стандартные реализации функции косинуса в этой задаче запрещается.
  */
-fun cos(x: Double, eps: Double): Double = TODO()
+fun cos(x: Double, eps: Double): Double {
+    var tmp = x
+    var sum = x
+    var i = 2
+    while(abs(tmp)>eps){
+        tmp = -pow(tmp, i.toDouble())/(i*(i+1))
+        sum += tmp
+        i = i+2
+    }
+    return sum
+}
 
 /**
  * Средняя
